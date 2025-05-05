@@ -1,6 +1,8 @@
-type Props = {}
+"use client"
+import Link from "next/link"
+import React from "react"
 
-const Footer = (props: Props) => {
+const Footer = () => {
     return (
 
         <footer className="border-t border-gray-800 bg-gray-950 py-12">
@@ -9,9 +11,9 @@ const Footer = (props: Props) => {
                     <div className="flex items-center gap-2">
                         <span className="text-lg font-bold">GitBetter</span>
                     </div>
-                    <div className="text-sm text-gray-500">
-                        © {new Date().getFullYear()} GitBetter. 
-                        Built by Gaurav.
+                    <div className="text-sm text-gray-500 flex flex-col justify-right md:items-end items-center">
+                        <div>© {new Date().getFullYear()} GitBetter. All rights reserved.</div>
+                        <Link className="hover:text-white" href="https://github.com/gaurav1452001" target="_blank">Built by Gaurav</Link>
                     </div>
                 </div>
             </div>

@@ -1,11 +1,7 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
-import { Github, Code, Users, Zap, ArrowRight, Search, Star } from "lucide-react"
-type Props = {}
+"use client"
+import {Code, Search, Star } from "lucide-react"
 
-const Howitworks = (props: Props) => {
+const Howitworks = () => {
     return (
         <section id="features" className="bg-gray-900 py-20">
             <div className="container mx-auto px-4">

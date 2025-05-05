@@ -1,10 +1,9 @@
+"use client"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
 import { Github, Code, Users, Zap, ArrowRight, Search, Star } from "lucide-react"
-type Props = {}
 
-const Hero = (props: Props) => {
+const Hero =() => {
     return (
         <section className="container mx-auto px-4 py-20 md:py-32">
             <div className="mx-auto max-w-4xl text-center">
@@ -15,6 +14,7 @@ const Hero = (props: Props) => {
                     GitBetter uses AI to connect developers with open source projects that match their skills and interests,
                     while helping maintainers find the contributors they need.
                 </p>
+                
                 <div className="mx-auto mb-12 flex max-w-md flex-col gap-4 sm:flex-row">
                     <Input
                         placeholder="What technologies are you interested in?"
