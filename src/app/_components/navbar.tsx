@@ -1,6 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button"
-import { signIn, signOut, useSession } from "next-auth/react"
+import { signOut, useSession } from "next-auth/react"
+import { signIn} from "../actions/auth-actions"
 
 const Navbar = () => {
     const session = useSession();
@@ -14,10 +15,17 @@ const Navbar = () => {
                     <div>
                         {session.data?.user && (
                             <div className="flex flex-row items-center gap-4">
-                                <Button onClick={() => signOut()} variant="outline" className="border-gray-700 text-neutral-900 hover:bg-gray-800 hover:text-white">Sign Out</Button>
-                                <img className="rounded-full border-3 border-neutral-500" src={session.data.user.image||""} alt="pic" width={40} height={40}/>
+                                <Button onClick={async () => await signOut()} variant="outline" className="border-gray-700 text-neutral-900 hover:bg-gray-800 hover:text-white">Sign Out</Button>
+                                <img className="rounded-full border-3 border-neutral-500" src={session.data.user.image || ""} alt="pic" width={40} height={40} />
                             </div>)}
-                        {!session.data?.user && <Button onClick={() => signIn()} variant="outline" className="cursor-pointer border-gray-700 text-neutral-900 hover:bg-emerald-500 hover:text-white ">Login</Button>}
+                        {!session.data?.user && <Button 
+                            onClick={async () => {
+                                await signIn()
+                            }} 
+                            variant="outline" 
+                            className="cursor-pointer border-gray-700 text-neutral-900 hover:bg-emerald-500 hover:text-white">
+                            Login
+                        </Button>}
                     </div>
                 </div>
             </div>
