@@ -27,17 +27,17 @@ const Hero =() => {
                     GitBetter uses AI to connect developers with open source projects that match their skills and interests,
                     while helping maintainers find the contributors they need.
                 </p>
-                    <form onSubmit={(e) => { e.preventDefault(); handleUser(); }} className="flex items-center justify-center gap-4">
+                    <div className="mx-auto mb-12 flex max-w-md flex-col gap-4 sm:flex-row">
                     <Input
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         placeholder="Enter Your Github Username"
                         className="border-gray-700 bg-gray-900 text-white placeholder:text-gray-500"
                     />
-                    <button type="submit" className="bg-emerald-500 cursor-pointer text-white hover:bg-emerald-600">
+                    <Button onClick={() => handleUser()} className="bg-emerald-500 cursor-pointer text-white hover:bg-emerald-600">
                         Find Projects <ArrowRight className="ml-2 h-4 w-4" />
-                    </button>
-                </form>
+                    </Button>
+                </div>
             </div>
         </section>
     )
