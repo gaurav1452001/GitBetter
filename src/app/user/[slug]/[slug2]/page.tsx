@@ -13,9 +13,11 @@ interface GitHubProfile {
 }
 
 const UserProfilePage = () => {
-    const params = useParams<{ slug: string }>();
+    const params = useParams<{ slug: string,slug2:string }>();
     const username = params.slug;
-    
+    const reponame = params.slug2;
+    console.log(username);
+    console.log(reponame);
     useEffect(() => {
         fetch(`https://api.github.com/users/${username}`)
         .then((res) => res.json())
@@ -36,10 +38,10 @@ const UserProfilePage = () => {
         <div className="min-h-screen bg-gray-950">
 
             <main className="container mx-auto px-4 py-8">
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-2xl mx-auto">
                     <div className="flex flex-col md:flex-row items-start gap-8">
                         {/* Profile Image Section */}
-                        <div className="w-full md:w-1/3">
+                        <div className="w-1/3 md:w-1/3">
                             <img
                                 className="w-full rounded-lg shadow-2xl"
                                 src={profileData.avatar_url}
@@ -48,7 +50,7 @@ const UserProfilePage = () => {
                         </div>
 
                         {/* Profile Info Section */}
-                        <div className="w-full md:w-2/3 space-y-6">
+                        <div className="w-full md:w-2/3 space-y-3">
                             <div>
                                 <h1 className="text-3xl font-bold text-white mb-2">
                                     {profileData.name}

@@ -1,17 +1,20 @@
 "use client"
 import React from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Github, Code, Users, Zap, ArrowRight, Search, Star } from "lucide-react"
 import { useRouter } from "next/navigation"
 
-const Hero =() => {
-    const [username, setUsername] = React.useState<string>("");
+const Hero = () => {
+    const [url, setUrl] = React.useState<string>("");
     const router = useRouter();
-    const handleUser = async() => {
-        // Handle user input and redirect to the user page
-        if (username) {
-            router.push(`/user/${username}`);
+
+    const handleRepo = async () => {
+        // Extract the username and reponame from the URL
+        const urlParts = url.split("/");
+        if (urlParts.length < 5) {
+            alert("Please enter a valid GitHub repository URL.");
+            return;
+        }
+        if (url) {
+            router.push(`/user/${urlParts[3]}/${urlParts[4]}`);
         } else {
             alert("Please enter a GitHub username.");
         }
@@ -24,19 +27,23 @@ const Hero =() => {
                     Git<span className="text-emerald-400">Better</span>
                 </h1>
                 <p className="mb-8 text-lg text-gray-400 md:text-xl">
-                    GitBetter uses AI to connect developers with open source projects that match their skills and interests,
-                    while helping maintainers find the contributors they need.
+                    GitBetter uses the power of Langchain and LLM's to help you talk to any repository that you want
                 </p>
-                    <div className="mx-auto mb-12 flex max-w-md flex-col gap-4 sm:flex-row">
-                    <Input
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        placeholder="Enter Your Github Username"
-                        className="border-gray-700 bg-gray-900 text-white placeholder:text-gray-500"
+                <div className="mx-auto mb-12 flex max-w-md flex-col gap-4 sm:flex-row">
+                    <input
+                        value={url}
+                        onChange={(e) => setUrl(e.target.value)}
+                        placeholder="Enter the Repository URL"
+                        className="border-gray-700 bg-gray-900 text-white placeholder:text-gray-500 rounded-lg px-3"
                     />
-                    <Button onClick={() => handleUser()} className="bg-emerald-500 cursor-pointer text-white hover:bg-emerald-600">
-                        Find Projects <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
+                    <button onClick={() => handleRepo()} className="py-1.5 bg-emerald-500 cursor-pointer rounded-lg px-3 text-white hover:bg-emerald-600">
+                        <span>
+                            Talk to this Repository
+                        </span>
+                    </button>
+                </div>
+                <div className="mb-8 text-lg text-gray-400 md:text-xl">
+                    Example Format: https://github.com/gaurav1452001/GitBetter
                 </div>
             </div>
         </section>

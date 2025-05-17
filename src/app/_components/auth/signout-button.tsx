@@ -10,7 +10,7 @@ export function SignOut() {
         >
             <button
                 type="submit"
-                className="px-4 py-2 rounded-md font-medium transition-colors duration-200 
+                className="px-3 py-1.5 rounded-md font-medium transition-colors duration-200 
                          bg-white border border-gray-300 shadow-sm
                          text-gray-800
                          hover:bg-emerald-500 hover:text-white hover:border-emerald-600
